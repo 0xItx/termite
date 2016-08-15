@@ -957,6 +957,9 @@ gboolean key_press_cb(VteTerminal *vte, GdkEventKey *event, keybind_info *info) 
                 if (modify_key_feed(event, info, modify_table))
                     return TRUE;
         }
+    } else if (modifiers == (GDK_CONTROL_MASK|GDK_SUPER_MASK)) {
+        if(gdk_keyval_to_lower(event->keyval) == GDK_KEY_t)
+            launch_in_directory(vte);
     }
     return FALSE;
 }
